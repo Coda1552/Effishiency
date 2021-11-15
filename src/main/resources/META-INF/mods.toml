@@ -1,0 +1,11 @@
+modLoader="javafml" #mandatory
+loaderVersion="[37,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]] #mandatory
+modId="effishiency" #mandatory
+version="${file.jarVersion}" #mandatory
+logoFile="effishiency.png" #mandatory
+displayName="Effishiency" #mandatory
+authors="Coda" #optional
+description='''
+Effishiency is a small mod that adds a new enchantment for fishing rods!'''
