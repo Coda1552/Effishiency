@@ -18,7 +18,7 @@ public class EffishiencyConfig {
             if (spec == Common.SPEC) Common.reload();
         }
         catch (Throwable e) {
-            Effishiency.LOGGER.error("Something went wrong updating the Fins and Tails config, using previous or default values! {}", e.toString());
+            Effishiency.LOGGER.error("Something went wrong updating the Effishiency config, using previous or default values! {}", e.toString());
         }
     }
 
