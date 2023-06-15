@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +27,7 @@ public class Effishiency {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        forgeBus.addListener(this::onFishCatch);
+        forgeBus.addListener(EventPriority.HIGHEST, this::onFishCatch);
         FishEnchantments.ENCHATNMENTS.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, EffishiencyConfig.Common.SPEC);
