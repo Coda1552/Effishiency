@@ -28,7 +28,7 @@ public class EffishiencyEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment p_44690_) {
-        return super.checkCompatibility(p_44690_) && p_44690_ != Enchantments.MENDING;
+        return super.checkCompatibility(p_44690_) && p_44690_ != Enchantments.FISHING_LUCK;
     }
 
 }
