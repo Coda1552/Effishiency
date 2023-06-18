@@ -34,21 +34,21 @@ public class Effishiency {
 
     private void onFishCatch(ItemFishedEvent event) {
         NonNullList<ItemStack> stacks = event.getDrops();
-        InteractionHand hand = event.getPlayer().getUsedItemHand();
-        ItemStack stack = event.getPlayer().getItemInHand(hand);
-        if (EnchantmentHelper.getEnchantments(event.getPlayer().getItemInHand(hand)).containsKey(FishEnchantments.EFFISHIENCY.get())) {
-            int i = EnchantmentHelper.getItemEnchantmentLevel(FishEnchantments.EFFISHIENCY.get(), event.getPlayer().getItemInHand(hand));
-            //if (stacks.iterator().next().is(ItemTags.FISHES)) {
-                int amount = event.getPlayer().getRandom().nextInt(i) + 2;
-                int damageAmount = stack.getDamageValue() + amount - 1;
-                stacks.iterator().next().setCount(amount);
-                if (!EffishiencyConfig.Common.INSTANCE.durability.get()) {
-                    stack.getItem().setDamage(stack, stack.getDamageValue());
-                }
-                else {
-                    stack.getItem().setDamage(stack, damageAmount);
-                }
-           //}
+        InteractionHand hand = event.getEntity().getUsedItemHand();
+        ItemStack stack = event.getEntity().getItemInHand(hand);
+        if (EnchantmentHelper.getEnchantments(event.getEntity().getItemInHand(hand)).containsKey(FishEnchantments.EFFISHIENCY.get())) {
+            int i = EnchantmentHelper.getItemEnchantmentLevel(FishEnchantments.EFFISHIENCY.get(), event.getEntity().getItemInHand(hand));
+            int amount = event.getEntity().getRandom().nextInt(i) + 2;
+            int damageAmount = stack.getDamageValue() + amount - 1;
+
+            stacks.iterator().next().setCount(amount);
+
+            if (!EffishiencyConfig.Common.INSTANCE.durability.get()) {
+                stack.getItem().setDamage(stack, stack.getDamageValue());
+            }
+            else {
+                stack.getItem().setDamage(stack, damageAmount);
+            }
         }
         else {
             stacks.iterator().next().setCount(1);
