@@ -1,8 +1,6 @@
 package coda.effishiency;
 
-import coda.effishiency.init.FishEnchantments;
 import net.minecraft.core.NonNullList;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -26,39 +24,9 @@ public class Effishiency {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        forgeBus.addListener(this::onFishCatch);
-        FishEnchantments.ENCHATNMENTS.register(bus);
+        EffishiencyRegistry.ENCHANTMENTS.register(bus);
+        EffishiencyRegistry.GLM.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, EffishiencyConfig.Common.SPEC);
-    }
-
-    private void onFishCatch(ItemFishedEvent event) {
-        NonNullList<ItemStack> stacks = event.getDrops();
-        InteractionHand hand = event.getEntity().getUsedItemHand();
-        ItemStack stack = event.getEntity().getItemInHand(hand);
-
-        if (EnchantmentHelper.getEnchantments(event.getEntity().getItemInHand(hand)).containsKey(FishEnchantments.EFFISHIENCY.get())) {
-            int i = EnchantmentHelper.getTagEnchantmentLevel(FishEnchantments.EFFISHIENCY.get(), event.getEntity().getItemInHand(hand));
-            int amount = event.getEntity().getRandom().nextInt(i) + 2;
-            int damageAmount = stack.getDamageValue() + amount - 1;
-
-            /*for (int j = 0; j < amount; j++) {
-                stacks.add(i, stack.copy());
-            }*/
-
-            stacks.iterator().next().setCount(amount);
-
-            if (!EffishiencyConfig.Common.INSTANCE.durability.get()) {
-                stack.getItem().setDamage(stack, stack.getDamageValue());
-            }
-            else {
-                stack.getItem().setDamage(stack, damageAmount);
-            }
-        }
-        else {
-            stacks.iterator().next().setCount(1);
-            int damageAmount = stack.getDamageValue() + 1;
-            stack.getItem().setDamage(stack, damageAmount);
-        }
     }
 }
