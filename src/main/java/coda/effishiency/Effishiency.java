@@ -22,7 +22,6 @@ public class Effishiency {
 
     public Effishiency() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         EffishiencyRegistry.ENCHANTMENTS.register(bus);
         EffishiencyRegistry.GLM.register(bus);

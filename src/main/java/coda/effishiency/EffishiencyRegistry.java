@@ -14,5 +14,5 @@ public class EffishiencyRegistry {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLM = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Effishiency.MOD_ID);
 
     public static final RegistryObject<EffishiencyEnchantment> EFFISHIENCY = ENCHANTMENTS.register("effishiency", () -> new EffishiencyEnchantment(Enchantment.Rarity.RARE, EnchantmentCategory.FISHING_ROD, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND}));
-    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER = GLM.register("fish_glm", EffishiencyLootModifier.CODEC);
+    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> FISH_LOOT_MODIFIER = GLM.register("fish_glm", EffishiencyLootModifier.CODEC);
 }
