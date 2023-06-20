@@ -36,10 +36,15 @@ public class Effishiency {
         NonNullList<ItemStack> stacks = event.getDrops();
         InteractionHand hand = event.getEntity().getUsedItemHand();
         ItemStack stack = event.getEntity().getItemInHand(hand);
+
         if (EnchantmentHelper.getEnchantments(event.getEntity().getItemInHand(hand)).containsKey(FishEnchantments.EFFISHIENCY.get())) {
-            int i = EnchantmentHelper.getItemEnchantmentLevel(FishEnchantments.EFFISHIENCY.get(), event.getEntity().getItemInHand(hand));
+            int i = EnchantmentHelper.getTagEnchantmentLevel(FishEnchantments.EFFISHIENCY.get(), event.getEntity().getItemInHand(hand));
             int amount = event.getEntity().getRandom().nextInt(i) + 2;
             int damageAmount = stack.getDamageValue() + amount - 1;
+
+            /*for (int j = 0; j < amount; j++) {
+                stacks.add(i, stack.copy());
+            }*/
 
             stacks.iterator().next().setCount(amount);
 
