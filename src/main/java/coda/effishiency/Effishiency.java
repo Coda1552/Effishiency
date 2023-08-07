@@ -1,8 +1,6 @@
 package coda.effishiency;
 
-import coda.effishiency.init.FishEnchantments;
 import net.minecraft.core.NonNullList;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -27,13 +25,14 @@ public class Effishiency {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        forgeBus.addListener(EventPriority.HIGHEST, this::onFishCatch);
-        FishEnchantments.ENCHATNMENTS.register(bus);
+        //forgeBus.addListener(EventPriority.HIGHEST, this::onFishCatch);
+        EffishiencyRegistry.ENCHANTMENTS.register(bus);
+        EffishiencyRegistry.GLM.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, EffishiencyConfig.Common.SPEC);
     }
 
-    private void onFishCatch(ItemFishedEvent event) {
+    /*private void onFishCatch(ItemFishedEvent event) {
         NonNullList<ItemStack> stacks = event.getDrops();
         InteractionHand hand = event.getEntity().getUsedItemHand();
         ItemStack stack = event.getEntity().getItemInHand(hand);
@@ -56,5 +55,5 @@ public class Effishiency {
             int damageAmount = stack.getDamageValue() + 1;
             stack.getItem().setDamage(stack, damageAmount);
         }
-    }
+    }*/
 }
