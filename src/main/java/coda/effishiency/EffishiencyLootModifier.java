@@ -47,6 +47,9 @@ public class EffishiencyLootModifier extends LootModifier {
                     stack.getItem().setDamage(stack, damageAmount);
                 }
             }
+            else {
+                ret = generatedLoot;
+            }
         }
         return ret;
     }
